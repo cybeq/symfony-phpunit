@@ -61,8 +61,14 @@ class NbpController extends AbstractController
                 continue;
             }
             $diff = array(
-                floatval(number_format(floatval($responseData->Rate[$i]->Bid) - $lastCurrencyValue[0], 2)),
-                floatval(number_format(floatval($responseData->Rate[$i]->Ask) - $lastCurrencyValue[1], 2))
+                float(
+
+                    float($responseData->Rate[$i]->Bid) - float($lastCurrencyValue[0])),
+
+                float(
+
+                    float($responseData->Rate[$i]->Ask) - float($lastCurrencyValue[1])
+                )
             );
             $lastCurrencyValue = [floatval($responseData->Rate[$i]->Bid), floatval($responseData->Rate[$i]->Ask)];
 
@@ -84,4 +90,8 @@ class NbpController extends AbstractController
         if(($startDate->diff($endDate))->days > 7 ) return [false, "Maximum 7 days difference"];
         if($startDate >= new \DateTime() || $endDate >= new \DateTime()) return [false, "Date cannot be set in future"];
         return [true];}
+}
+
+function float($number){
+    return floatval(number_format(floatval($number),2));
 }

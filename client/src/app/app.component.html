@@ -24,9 +24,9 @@
       <td>{{ all.EffectiveDate }}</td>
       <td>{{ all.Ask }}</td>
       <td>{{ all.Bid }}</td>
-      <td *ngIf="all.Diff" style="color:{{all.Diff[0]>0 ? 'green' : 'red'}}">{{ all.Diff[0] }}</td>
-      <td *ngIf="!all.Diff">N/A</td>
       <td *ngIf="all.Diff" style="color:{{all.Diff[1]>0 ? 'green' : 'red'}}">{{ all.Diff[1] }}</td>
+      <td *ngIf="!all.Diff">N/A</td>
+      <td *ngIf="all.Diff" style="color:{{all.Diff[0]>0 ? 'green' : 'red'}}">{{ all.Diff[0] }}</td>
       <td *ngIf="!all.Diff">N/A</td>
 
     </tr>

@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+nbp_api:
+    path: /api/req
+    controller: App\Controller\NbpController::req
+nbp_view:
+    path: /
+    controller: App\Controller\NbpController::view

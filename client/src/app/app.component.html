@@ -1,0 +1,37 @@
+<input [(ngModel)]="startDate" id="startDate" type="date">
+<input [(ngModel)]="endDate" id="endDate" type="date">
+<select [(ngModel)]="currency">
+  <option value="usd">USD</option>
+  <option value="eur">Euro</option>
+  <option value="chf">Frank Szwajcarski</option>
+</select>
+<button (click)="submit()">Zatwierdź</button>
+
+
+<div style="display: grid;">
+  <table>
+    <thead>
+    <tr>
+      <th style="text-align: left">Effective Date</th>
+      <th style="text-align: left">Ask</th>
+      <th  style="text-align: left">Bid</th>
+      <th style="text-align: left">Difference Ask</th>
+      <th style="text-align: left">Difference Bid</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let all of data">
+      <td>{{ all.EffectiveDate }}</td>
+      <td>{{ all.Ask }}</td>
+      <td>{{ all.Bid }}</td>
+      <td *ngIf="all.Diff" style="color:{{all.Diff[0]>0 ? 'green' : 'red'}}">{{ all.Diff[0] }}</td>
+      <td *ngIf="!all.Diff">N/A</td>
+      <td *ngIf="all.Diff" style="color:{{all.Diff[1]>0 ? 'green' : 'red'}}">{{ all.Diff[1] }}</td>
+      <td *ngIf="!all.Diff">N/A</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<h1 *ngIf="error">{{error}}</h1>
